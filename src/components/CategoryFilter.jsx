@@ -3,23 +3,27 @@ import { fetchCategories } from "../api.js"
 
 export default function CategoryFilter() {
 	const [categories, setCategories] = useState([])
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
+		setLoading(true)
 		fetchCategories().then((data) => {
 			setCategories(data.categories)
+			setLoading(false)
 		})
 	}, [])
-
-	// if (error) return <div>failed to load</div>
-	// if (isLoading) return <div>loading...</div>
 
 	// render data
 	return (
 		<div className="flex w-screen gap-5 overflow-x-auto lg:w-auto lg:flex-col">
 			<Category slug="All Reviews" />
-			{categories.map((category) => {
-				return <Category key={category.slug} {...category} />
-			})}
+			{loading ? (
+				<span className="text-white">Loading...</span>
+			) : (
+				categories.map((category) => {
+					return <Category key={category.slug} {...category} />
+				})
+			)}
 		</div>
 	)
 }

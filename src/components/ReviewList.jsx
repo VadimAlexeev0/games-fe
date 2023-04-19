@@ -3,12 +3,21 @@ import * as api from "../api"
 
 export default function ReviewList() {
 	const [reviews, setReviews] = useState([])
-
+	const [loading, setLoading] = useState(true)
 	useEffect(() => {
+		setLoading(true)
 		api.fetchReviews().then((data) => {
 			setReviews(data.reviews)
+			setLoading(false)
 		})
 	}, [])
+	if (loading) {
+		return (
+			<h1 className="grid h-screen place-items-center text-3xl lg:h-full">
+				Loading...
+			</h1>
+		)
+	}
 	return (
 		<div className="grid grid-cols-1 gap-16 p-3 lg:grid-cols-3 lg:p-16">
 			{reviews.map((review) => {
