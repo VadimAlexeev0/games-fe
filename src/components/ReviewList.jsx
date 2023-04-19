@@ -33,7 +33,7 @@ function Review({
 	return (
 		<div className="w-full rounded-xl bg-stone-900 shadow-lg">
 			<img src={review_img_url} alt="temp" className="rounded-xl" />
-			<div className="flex h-32 flex-col p-6">
+			<div className="flex flex-col p-6">
 				<h2 className="text-xl font-bold">{title}</h2>
 				<span>{designer}</span>
 				<span>
