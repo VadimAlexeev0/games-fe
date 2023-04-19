@@ -9,9 +9,8 @@ export default function ReviewList() {
 			setReviews(data.reviews)
 		})
 	}, [])
-	console.log(reviews)
 	return (
-		<div className="grid grid-cols-3 gap-16 p-16">
+		<div className="grid grid-cols-1 gap-16 p-3 lg:grid-cols-3 lg:p-16">
 			{reviews.map((review) => {
 				return <Review key={review.review_id} {...review} />
 			})}
@@ -32,7 +31,11 @@ function Review({
 }) {
 	return (
 		<div className="w-full rounded-xl bg-stone-900 shadow-lg">
-			<img src={review_img_url} alt="temp" className="rounded-xl" />
+			<img
+				src={review_img_url}
+				alt={`Display Image for ${title} by ${designer}`}
+				className="rounded-xl"
+			/>
 			<div className="flex flex-col p-6">
 				<h2 className="text-xl font-bold">{title}</h2>
 				<span>{designer}</span>
