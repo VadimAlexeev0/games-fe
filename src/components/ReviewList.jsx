@@ -28,12 +28,17 @@ function Review({
 	designer,
 	created_at,
 	review_img_url,
+	votes,
 }) {
 	return (
-		<div className=" w-full rounded-xl bg-stone-900">
+		<div className="w-full rounded-xl bg-stone-900 shadow-lg">
 			<img src={review_img_url} alt="temp" className="rounded-xl" />
-			<div className="h-32">
-				<span>{title}</span>
+			<div className="flex h-32 flex-col p-6">
+				<h2 className="text-xl font-bold">{title}</h2>
+				<span>{designer}</span>
+				<span>
+					{votes} Votes & {comment_count} Comments
+				</span>
 			</div>
 		</div>
 	)
