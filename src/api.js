@@ -1,6 +1,10 @@
 import axios from "axios"
+
 const api = axios.create({
 	baseURL: "https://games-backend-db47.onrender.com/api",
 })
 
-export const fetcher = (url) => api.get(url).then((res) => res.data)
+export const fetchCategories = () =>
+	api.get("/categories").then((res) => res.data)
+
+export const fetchReviews = () => api.get("/reviews").then((res) => res.data)

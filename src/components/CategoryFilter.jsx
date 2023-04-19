@@ -1,32 +1,36 @@
 import React, { useState, useEffect } from "react"
-import useSWR from "swr"
-import * as api from "../api"
+import { fetchCategories } from "../api.js"
 
 export default function CategoryFilter() {
-	const {
-		data: { categories },
-		error,
-		isLoading,
-	} = useSWR("/categories", api.fetcher)
+	const [categories, setCategories] = useState([])
+	const [loading, setLoading] = useState(true)
 
-	if (error) return <div>failed to load</div>
-	if (isLoading) return <div>loading...</div>
+	useEffect(() => {
+		setLoading(true)
+		fetchCategories().then((data) => {
+			setCategories(data.categories)
+			setLoading(false)
+		})
+	}, [])
 
-	console.log(categories)
 	// render data
 	return (
-		<>
+		<div className="flex w-screen gap-5 overflow-x-auto lg:w-auto lg:flex-col">
 			<Category slug="All Reviews" />
-			{categories.map((category) => {
-				return <Category {...category} />
-			})}
-		</>
+			{loading ? (
+				<span className="text-white">Loading...</span>
+			) : (
+				categories.map((category) => {
+					return <Category key={category.slug} {...category} />
+				})
+			)}
+		</div>
 	)
 }
 
 export function Category({ slug }) {
 	return (
-		<div className="w-2/3 border-4">
+		<div className="min-w-fit rounded-lg border-2 p-1 text-white">
 			<span>{slug}</span>
 		</div>
 	)
