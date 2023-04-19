@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import * as api from "../api"
+import { Link } from "react-router-dom"
 
 export default function ReviewList() {
 	const [reviews, setReviews] = useState([])
@@ -39,19 +40,21 @@ function Review({
 	votes,
 }) {
 	return (
-		<div className="w-full rounded-xl bg-stone-900 shadow-lg">
-			<img
-				src={review_img_url}
-				alt={`Display Image for ${title} by ${designer}`}
-				className="rounded-xl"
-			/>
-			<div className="flex flex-col p-6">
-				<h2 className="text-xl font-bold">{title}</h2>
-				<span>{designer}</span>
-				<span>
-					{votes} Votes & {comment_count} Comments
-				</span>
+		<Link to={`/review/${review_id}`}>
+			<div className="w-full rounded-xl bg-stone-900 shadow-lg">
+				<img
+					src={review_img_url}
+					alt={`Display Image for ${title} by ${designer}`}
+					className="rounded-xl"
+				/>
+				<div className="flex flex-col p-6">
+					<h2 className="text-xl font-bold">{title}</h2>
+					<span>{designer}</span>
+					<span>
+						{votes} Votes & {comment_count} Comments
+					</span>
+				</div>
 			</div>
-		</div>
+		</Link>
 	)
 }
