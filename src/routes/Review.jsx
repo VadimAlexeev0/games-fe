@@ -31,7 +31,7 @@ export default function Review() {
 	} = reviewData
 
 	return (
-		<div className="flex p-5">
+		<div className="flex flex-col-reverse p-5 lg:flex-row">
 			<div className="w-3/4 pr-5">
 				<Link to="/">
 					<span>&lt; Back</span>
