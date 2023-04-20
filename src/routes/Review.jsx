@@ -17,7 +17,12 @@ export default function Review() {
 	}, [])
 	// console.log(reviewData)
 
-	if (loading) return <h1>Loading...</h1>
+	if (loading)
+		return (
+			<h1 className="grid h-screen place-items-center text-3xl lg:h-full">
+				Loading...
+			</h1>
+		)
 
 	const {
 		title,
