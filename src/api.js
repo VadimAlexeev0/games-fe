@@ -8,3 +8,6 @@ export const fetchCategories = () =>
 	api.get("/categories").then((res) => res.data)
 
 export const fetchReviews = () => api.get("/reviews").then((res) => res.data)
+
+export const fetchReview = (reviewID) =>
+	api.get(`/reviews/${reviewID}`).then((res) => res.data)
