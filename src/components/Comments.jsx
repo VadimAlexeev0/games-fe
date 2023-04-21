@@ -21,7 +21,7 @@ export default function Comments({ id }) {
 			{comments.map(({ comment_id, body, author, created_at, votes }) => (
 				<div
 					key={comment_id}
-					className="grid grid-cols-3 border-b-2 p-3"
+					className="grid grid-cols-1 gap-2 border-b-2 py-3 lg:grid-cols-3 lg:p-3"
 				>
 					<span className="font-semibold">{author}:</span>
 					<span>{body}</span>
