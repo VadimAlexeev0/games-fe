@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import * as api from "../api"
+import Comments from "../components/Comments"
 
 export default function Review() {
 	const { review_id } = useParams()
@@ -15,7 +16,6 @@ export default function Review() {
 			setLoading(false)
 		})
 	}, [])
-	// console.log(reviewData)
 
 	if (loading)
 		return (
@@ -36,25 +36,28 @@ export default function Review() {
 	} = reviewData
 
 	return (
-		<div className="flex flex-col-reverse p-5 lg:flex-row">
-			<div className="w-3/4 pr-5">
-				<Link to="/">
-					<span>&lt; Back</span>
-				</Link>
-				<pre className="pt-5">{category}</pre>
-				<h1 className=" text-3xl font-bold">{title}</h1>
-				<p className="pt-5 text-lg">{review_body}</p>
+		<>
+			<div className="flex flex-col-reverse p-5 lg:flex-row">
+				<div className="w-3/4 pr-5">
+					<Link to="/">
+						<span>&lt; Back</span>
+					</Link>
+					<pre className="pt-5">{category}</pre>
+					<h1 className=" text-3xl font-bold">{title}</h1>
+					<p className="pt-3 text-lg">{review_body}</p>
+				</div>
+				<div className="grow">
+					<img
+						src={review_img_url}
+						alt={`Display Image for ${title} by ${designer}`}
+						className="aspect-auto rounded-xl"
+					/>
+					<p>Created at: {Date(created_at).toString()}</p>
+					<p>Owner: {owner}</p>
+					<p>Votes: {votes}</p>
+				</div>
 			</div>
-			<div className="grow">
-				<img
-					src={review_img_url}
-					alt={`Display Image for ${title} by ${designer}`}
-					className="aspect-auto rounded-xl"
-				/>
-				<p>Created at: {created_at}</p>
-				<p>Owner: {owner}</p>
-				<p>Votes: {votes}</p>
-			</div>
-		</div>
+			<Comments id={review_id} />
+		</>
 	)
 }

@@ -11,3 +11,6 @@ export const fetchReviews = () => api.get("/reviews").then((res) => res.data)
 
 export const fetchReview = (reviewID) =>
 	api.get(`/reviews/${reviewID}`).then((res) => res.data)
+
+export const fetchComments = (reviewID) =>
+	api.get(`/reviews/${reviewID}/comments`).then((res) => res.data)
