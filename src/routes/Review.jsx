@@ -45,7 +45,7 @@ export default function Review() {
 					</Link>
 					<pre className="pt-5">{category}</pre>
 					<h1 className=" text-3xl font-bold">{title}</h1>
-					<p className="pt-5 text-lg">{review_body}</p>
+					<p className="pt-3 text-lg">{review_body}</p>
 				</div>
 				<div className="grow">
 					<img
