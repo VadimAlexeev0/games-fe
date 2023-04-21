@@ -11,9 +11,8 @@ export default function Comments({ id }) {
 			setLoading(false)
 		})
 	}, [])
-	console.log(comments)
 
-	if (loading) return null
+	if (loading) return <h1 className="text-center text-lg">Loading....</h1>
 
 	return (
 		<div className="p-5">

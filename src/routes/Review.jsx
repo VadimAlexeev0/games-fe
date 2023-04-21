@@ -12,7 +12,6 @@ export default function Review() {
 	useEffect(() => {
 		setLoading(true)
 		api.fetchReview(review_id).then(({ review }) => {
-			console.log("FETCHED")
 			setReviewData(review)
 			setLoading(false)
 		})
