@@ -31,7 +31,9 @@ export default function Comments({ id }) {
 					Create New
 				</button>
 			</div>
-			{createComment ? <NewComment /> : null}
+			{createComment ? (
+				<NewComment id={id} setComments={setComments} />
+			) : null}
 			{comments.length === 0 ? (
 				<h1>Nothing here :-(</h1>
 			) : (
@@ -39,7 +41,7 @@ export default function Comments({ id }) {
 					({ comment_id, body, author, created_at, votes }) => (
 						<div
 							key={comment_id}
-							className="grid grid-cols-1 gap-2 border-b-2 py-3 text-center lg:grid-cols-3 lg:p-3"
+							className="m-3 grid grid-cols-1 gap-2 border-b-2 text-center lg:grid-cols-3 lg:p-6"
 						>
 							<span className="font-semibold">{author}:</span>
 							<span>{body}</span>
