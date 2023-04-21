@@ -14,3 +14,6 @@ export const fetchReview = (reviewID) =>
 
 export const fetchComments = (reviewID) =>
 	api.get(`/reviews/${reviewID}/comments`).then((res) => res.data)
+
+export const patchReview = (reviewID, reqBody) =>
+	api.patch(`/reviews/${reviewID}`, reqBody).then((res) => res.data)

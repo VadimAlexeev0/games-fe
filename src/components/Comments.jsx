@@ -17,6 +17,7 @@ export default function Comments({ id }) {
 	return (
 		<div className="p-5">
 			<h1 className="pb-5 text-2xl font-bold">Comments:</h1>
+			{comments.length === 0 ? <h1>Nothing here :-(</h1> : null}
 			{comments.map(({ comment_id, body, author, created_at, votes }) => (
 				<div
 					key={comment_id}
