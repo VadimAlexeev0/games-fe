@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import * as api from "../api"
 import Comments from "../components/Comments"
+import Vote from "../components/Vote"
+import formatRelative from "date-fns/formatRelative"
 
 export default function Review() {
 	const { review_id } = useParams()
@@ -15,7 +17,7 @@ export default function Review() {
 			setReviewData(review)
 			setLoading(false)
 		})
-	}, [])
+	}, [review_id])
 
 	if (loading)
 		return (
@@ -38,7 +40,7 @@ export default function Review() {
 	return (
 		<>
 			<div className="flex flex-col-reverse p-5 lg:flex-row">
-				<div className="w-3/4 pr-5">
+				<div className="pr-5 lg:w-3/4">
 					<Link to="/">
 						<span>&lt; Back</span>
 					</Link>
@@ -52,9 +54,12 @@ export default function Review() {
 						alt={`Display Image for ${title} by ${designer}`}
 						className="aspect-auto rounded-xl"
 					/>
-					<p>Created at: {Date(created_at).toString()}</p>
+					<p>
+						Created at:{" "}
+						{formatRelative(new Date(), new Date(created_at))}
+					</p>
 					<p>Owner: {owner}</p>
-					<p>Votes: {votes}</p>
+					<Vote id={review_id} votes={votes} />
 				</div>
 			</div>
 			<Comments id={review_id} />
