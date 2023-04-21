@@ -56,7 +56,7 @@ export default function Review() {
 					/>
 					<p>
 						Created at:{" "}
-						{formatRelative(new Date(created_at), new Date())}
+						{formatRelative(new Date(), new Date(created_at))}
 					</p>
 					<p>Owner: {owner}</p>
 					<Vote id={review_id} votes={votes} />

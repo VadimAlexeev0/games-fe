@@ -28,7 +28,7 @@ export default function Comments({ id }) {
 					<span>{body}</span>
 					<span className="font-semibold">
 						Created:{" "}
-						{formatRelative(new Date(created_at), new Date())}
+						{formatRelative(new Date(), new Date(created_at))}
 					</span>
 				</div>
 			))}

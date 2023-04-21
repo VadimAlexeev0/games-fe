@@ -6,25 +6,29 @@ export default function Vote({ votes, id }) {
 	const [errorMsg, setErrorMsg] = useState()
 
 	const downVote = () => {
-		setUpdate((current) => {
-			return current - 1
-		})
-		api.patchReview(id, {
-			inc_votes: -1,
-		}).catch((err) => {
-			setErrorMsg(err.message)
-		})
+		if (update <= 1 && update > -1) {
+			setUpdate((current) => {
+				return current - 1
+			})
+			api.patchReview(id, {
+				inc_votes: -1,
+			}).catch((err) => {
+				setErrorMsg(err.message)
+			})
+		}
 	}
 
 	const upVote = () => {
-		setUpdate((current) => {
-			return current + 1
-		})
-		api.patchReview(id, {
-			inc_votes: 1,
-		}).catch((err) => {
-			setErrorMsg(err.message)
-		})
+		if (update < 1 && update >= -1) {
+			setUpdate((current) => {
+				return current + 1
+			})
+			api.patchReview(id, {
+				inc_votes: 1,
+			}).catch((err) => {
+				setErrorMsg(err.message)
+			})
+		}
 	}
 
 	return (
