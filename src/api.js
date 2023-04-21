@@ -24,3 +24,5 @@ export const patchReviewVote = (reviewID, vote) =>
 
 export const postComment = (reviewID, body) =>
 	api.post(`/reviews/${reviewID}/comments`, body).then((res) => res.data)
+
+export const fetchUsers = () => api.get("/users").then((res) => res.data)

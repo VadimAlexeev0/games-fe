@@ -1,4 +1,5 @@
 import CategoryFilter from "../components/CategoryFilter"
+import UserSwitcher from "./UserSwitcher"
 
 export default function Navbar() {
 	return (
@@ -9,6 +10,7 @@ export default function Navbar() {
 				Games
 			</h1>
 			<CategoryFilter />
+			<UserSwitcher />
 		</aside>
 	)
 }
