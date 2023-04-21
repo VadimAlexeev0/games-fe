@@ -15,5 +15,9 @@ export const fetchReview = (reviewID) =>
 export const fetchComments = (reviewID) =>
 	api.get(`/reviews/${reviewID}/comments`).then((res) => res.data)
 
-export const patchReview = (reviewID, reqBody) =>
-	api.patch(`/reviews/${reviewID}`, reqBody).then((res) => res.data)
+export const patchReviewVote = (reviewID, vote) =>
+	api
+		.patch(`/reviews/${reviewID}`, {
+			inc_votes: vote,
+		})
+		.then((res) => res.data)

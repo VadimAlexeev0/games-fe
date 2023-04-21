@@ -10,9 +10,7 @@ export default function Vote({ votes, id }) {
 			setUpdate((current) => {
 				return current - 1
 			})
-			api.patchReview(id, {
-				inc_votes: -1,
-			}).catch((err) => {
+			api.patchReviewVote(id, -1).catch((err) => {
 				setErrorMsg(err.message)
 			})
 		}
@@ -23,9 +21,7 @@ export default function Vote({ votes, id }) {
 			setUpdate((current) => {
 				return current + 1
 			})
-			api.patchReview(id, {
-				inc_votes: 1,
-			}).catch((err) => {
+			api.patchReviewVote(id, 1).catch((err) => {
 				setErrorMsg(err.message)
 			})
 		}
