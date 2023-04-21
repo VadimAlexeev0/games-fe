@@ -30,7 +30,7 @@ export default function CategoryFilter() {
 
 export function Category({ slug }) {
 	return (
-		<div className="min-w-fit rounded-lg border-2 p-1 text-white">
+		<div className="min-w-fit rounded-lg border-2 p-1 text-center text-white">
 			<span>{slug}</span>
 		</div>
 	)
