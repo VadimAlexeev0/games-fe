@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import * as api from "../api"
 import Comments from "../components/Comments"
 import Vote from "../components/Vote"
+import formatRelative from "date-fns/formatRelative"
 
 export default function Review() {
 	const { review_id } = useParams()
@@ -53,7 +54,10 @@ export default function Review() {
 						alt={`Display Image for ${title} by ${designer}`}
 						className="aspect-auto rounded-xl"
 					/>
-					<p>Created at: {Date(created_at).toString()}</p>
+					<p>
+						Created at:{" "}
+						{formatRelative(new Date(created_at), new Date())}
+					</p>
 					<p>Owner: {owner}</p>
 					<Vote id={review_id} votes={votes} />
 				</div>
